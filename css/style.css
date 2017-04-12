@@ -49,7 +49,7 @@ p {
 	overflow:hidden;
 }
 strong {
-  color: #FF4500;    //f1c11a
+  color: #FF4500;    /*f1c11a*/
   font-weight: 700;
 }
 
@@ -60,10 +60,14 @@ strong {
 }
 
 
-#feature,
 #contact,
 footer {
   padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+#feature {
+  padding-top: 20px;
   padding-bottom: 100px;
 }
 
@@ -628,21 +632,21 @@ footer a:hover {
       cursor: pointer;
 }
 
-.style-wraper{
+/*.style-wraper{
       position: relative;
       margin-top: 50px;
-/*      margin-bottom: 50px;*/
+      margin-bottom: 50px;
       margin-left: 20px;
-/*      border: 1px solid #ffffff;*/
-}
+      border: 1px solid #ffffff;
+}*/
 
-.size-wraper{
+/*.size-wraper{
       position: relative;
       margin-top: 90px;
-/*      margin-bottom: 50px;*/
+      margin-bottom: 50px;
       margin-left: 20px;
-/*      border: 1px solid #ffffff;*/
-}
+      border: 1px solid #ffffff;
+}*/
 
 #feature input {height: 40px;}
 
@@ -652,7 +656,7 @@ footer a:hover {
   border-radius: 0px;
   box-shadow: none;
   font-size: 16px;
-  margin-bottom: 16px;
+  /*margin-bottom: 5px;*/
   transition: all 0.4s ease-in-out;
 }
 
@@ -666,6 +670,18 @@ footer a:hover {
   color: #828282;  /*#828282*/
   letter-spacing: 0.8px;
   line-height: 28px;
+}
+
+#feature .btn-success:hover {
+  background: #FF4500;
+  color: #ffffff;
+  border-color: transparent;
+}
+
+#feature .btn-success {
+    background: #ffffff;
+    color: #242424;
+    border-color: transparent;
 }
 
 
