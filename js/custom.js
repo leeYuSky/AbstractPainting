@@ -8,6 +8,9 @@ $(window).load(function(){
 
 $(document).ready(function() {
 
+  var parentWidth = $("#image-wraper-parent").width();
+  $("#image-wraper").css({"height" : parentWidth *  1712 / 2878})
+  $("#result-image").css({"height" : parentWidth *  1712 / 2878})
   //初始化 电脑边框的图片和背景图的大小
   // var comptureWidth = $("#compture").width(),
   //     comptureHeight = $("#compture").height(),
@@ -16,10 +19,7 @@ $(document).ready(function() {
 
   //监听窗口变化
   // $(window).resize(function(){
-  //   var comptureWidth = $("#compture").width(),
-  //     comptureHeight = $("#compture").height(),
-  //     topLeft = 20 * comptureWidth / 800;
-  // $("#result-image").css({"width":comptureWidth * 752 / 800,"height":comptureHeight * 39 / 60,"border-top-left-radius":topLeft,"border-top-right-radius":topLeft});
+
   // });
 
 
@@ -30,11 +30,18 @@ $(document).ready(function() {
     increaseArea: '-10' // optional
   });
 
-  $("#feature .nav-wrap .iradio_polaris").css({
-      "background-color" : "#f1c11a",
-  });
+  // $('input').iCheck({
+  //   checkboxClass: 'icheckbox_flat-red',
+  //   radioClass: 'iradio_flat-red'
+  // });
+
+  
 
   // 生成圆形单选框组
+
+  // $("#feature .nav-wrap .iradio_polaris").css({
+  //     "background-color" : "#f1c11a",
+  // });
   // $(".nav-wrap").circleSelect();
 
 
@@ -64,15 +71,58 @@ $(document).ready(function() {
 
       // $("#result-image").attr("src",src).css({"width":width,"height":height,"top":top,"border-top-left-radius":20*height/390,"border-top-right-radius":20*height/390});
       // $("#compture").css({"width":width / 75.2 * 80,"height":height / 39 * 60})
-      if(width > height){
-        $("#image-wraper").css({"width" : 550,"height" : 400});
-        $("#result-image").attr("src",src).css({"width" : 550,"height" : 400})
-      } else if( width < height){
-        $("#image-wraper").css({"width" : 400,"height" : 550});
-        $("#result-image").attr("src",src).css({"width" : 400,"height" : 550})
+
+      var parentWidth = $("#image-wraper-parent").width();
+      if(parentWidth > 550){
+        if(width > height){
+          var r1 = parentWidth / 550 ;
+          var r2 = width / height;
+
+          if(r1 > r2){
+            $("#image-wraper").css({"width" : width / height * 550,"height" : "100%" });
+            $("#result-image").attr("src",src).css({"width" : "100%","height" : "100%" });
+          } else {
+            $("#image-wraper").css({"width" : "100%","height" : parentWidth * height / width});
+            $("#result-image").attr("src",src).css({"width" : "100%","height" : "100%"})
+          }
+
+
+        } else if( width < height){
+
+          $("#image-wraper").css({"width" : width / height * 550,"height" : "100%"});
+          $("#result-image").attr("src",src).css({"width" : "100%","height" : "100%"})
+
+        } else {
+
+          $("#image-wraper").css({"width" : 550,"height" : 550});
+          $("#result-image").attr("src",src).css({"width" : "100%","height" : "100%"})
+
+        }
       } else {
-        $("#image-wraper").css({"width" : 500,"height" : 500});
-        $("#result-image").attr("src",src).css({"width" : 500,"height" : 500})
+        if(width > height){
+
+          $("#image-wraper").css({"width" : "100%","height" : parentWidth * height / width});
+          $("#result-image").attr("src",src).css({"width" : "100%","height" : "100%"})
+
+        } else if( width < height){
+          var r1 = 550 / parentWidth;
+          var r2 = height / width;
+
+          if(r1 > r2){
+            $("#image-wraper").css({"width" : "100%","height" : parentWidth * height / width});
+            $("#result-image").attr("src",src).css({"width" : "100%","height" : "100%"})
+          } else {
+            $("#image-wraper").css({"width" : width / height * 550,"height" : "100%"});
+            $("#result-image").attr("src",src).css({"width" : "100%","height" : "100%"})
+          }
+
+          
+        } else {
+
+          $("#image-wraper").css({"width" : parentWidth,"height" : parentWidth});
+          $("#result-image").attr("src",src).css({"width" : "100%","height" : "100%" })
+
+        }
       }
       // myBrowser();
       // $("#saveImage").attr("download",src);
