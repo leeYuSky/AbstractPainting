@@ -56,6 +56,10 @@ $(document).ready(function() {
     output("Client has disconnect!")
   });
 
+  socket.on("loginreq",function(data){
+    alert(data);
+  });
+
   socket.on("sendImage",function(data){
     if(data){
 
@@ -135,6 +139,12 @@ $(document).ready(function() {
 
 
     }
+  });
+
+  $("#submit").click(function(){
+
+    socket.emit('loginEvent', {username:"lee",password:"123456"});
+
   });
 
   function sendImageRequest(style, mood, width, height){
